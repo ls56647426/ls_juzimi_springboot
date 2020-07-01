@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot_juzimi?characterEncoding=utf-8
+    username: root
+    password: admin
+    type: com.alibaba.druid.pool.DruidDataSource
+  mvc: 
+    static-path-pattern: /**
+  jpa: 
+    database: MYSQL     # 指定数据库的类型
+    hibernate: 
+      ddl-auto: update  # 更新或创建数据库表结构
+    show-sql: true      # 指定是否需要在日志中显示sql语句
+    open-in-view: true  #解决在Spring MVC与JPA之间Session的声明周期问题
+  cache: 
+    ehcache: 
+      config: ehcache.xml
+mybatis: 
+  type-aliases-package: com.ls.juzimi.springboot.pojo
+server:
+  port: 80
+  context-path: /
+

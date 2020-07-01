@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>句子迷 | 美句佳句大全,您的句子摘抄本</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- 网页图标 -->
+	<link rel="shortcut icon" href="/img/ico/favicon.ico" type="image/x-icon">
+	
+	<!-- bootstrap的css文件 -->
+	<link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- 自定义前端主题样式 -->
+	<link rel="stylesheet" type="text/css" href="/css/apps/foreTheme.css" />
+	
+	<!-- 自定义css样式 -->
+	<link rel="stylesheet" type="text/css" href="/css/apps/homepage.css"/>
+	
+	<!-- bootstrap框架的js文件 -->
+	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/webjars/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	
+	<!-- 引入自定义status结果的js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/status.js}" charset = "UTF-8"></script>
+	
+	<!-- 自定义ajax函数封装 -->
+	<script type="text/javascript" src="/js/apps/ajaxUtils.js" charset="UTF-8"></script>
+	
+	<!-- 自定义函数封装 -->
+	<script type="text/javascript" src="/js/apps/homepage.js" charset="UTF-8"></script>
+</head>
+<body class="container-fluid">
+	<div class="row">
+		<!-- 顶部导航栏 -->
+		<div id="majorNav" class="col-sm-9" style="margin:0 auto; padding:0;"></div>
+	
+		<!-- 整体栅格布局 -->
+		<div class="container-fluid col-sm-9" style="margin:0 auto;">
+			<div class="row">
+				<!-- 主要信息 -->
+				<div class="col-sm-8" style="padding:0 5px 0 0;">
+					<!-- 轮播宣传图片 -->
+					<div class = "card text-center shadow" style="margin: 10px 0px 10px 0px; height: 210px;">
+						<div class="card-body" style="padding: 10px 20px 20px 20px;">
+							<div id="carouselExampleFade" class="carousel carousel-fade" data-ride="carousel">
+								<ol class="carousel-indicators" style="margin:0 0 -25px 0;">
+									<li data-target="#carouselExampleFade" data-slide-to="0" class="active" style="background-color: #F07B0A; height:5px;"></li>
+									<li data-target="#carouselExampleFade" data-slide-to="1" style="background-color: #F07B0A; height:5px;"></li>
+								</ol>
+								<div class="carousel-inner">
+									<div class="carousel-item active" data-interval="10000">
+										<img src="/img/ad1.jpeg" class="d-block w-100" alt="ad1">
+									</div>
+									<div class="carousel-item" data-interval="10000">
+										<img src="/img/ad2.jpeg" class="d-block w-100" alt="ad2">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- 发现 -->
+					<div class="card shadow text-center" style="margin: 10px 0px 10px 0px; height: 220px;">
+						<div class="card-header" style="padding:1px 1px 1px 1px;">
+							<p class="p_sm_title">发现 | Find</p>
+						</div>
+						<div class="card-body row text-left" style="padding:5px; margin:0;">
+							<div class="card shadow-sm" style="margin-left:1%; width:32%;">
+								<div class="row no-gutters find_img" style="width:100%;">
+									<div class="col-sm-4">
+										<img src="/img/偶遇佳句.png" class="card-img" alt="偶遇佳句" />
+									</div>
+									<div class="col-sm-8">
+										<div class="card-body">
+											<a href="javascript:void(0)" class="card-title">偶遇佳句</a>
+											<p class="card-text text-muted">正所谓，相请不如偶遇</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card shadow-sm" style="margin:0 1% 0 1%; width:32%;">	
+								<div class="row no-gutters find_img" style="width:100%;">
+									<div class="col-sm-4">
+										<img src="/img/名人名句.png" class="card-img" alt="名人名句">
+									</div>
+									<div class="col-md-8">
+										<div class="card-body">
+											<a href="javascript:void(0)" class="card-title">名人名句</a>
+											<p class="card-text text-muted">穿越时空，与名家对话</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card shadow-sm" style="width:32%;">	
+								<div class="row no-gutters find_img" style="width:100%;">
+									<div class="col-sm-4">
+										<img src="/img/精选句集.png" class="card-img" alt="精选句集">
+									</div>
+									<div class="col-md-8">
+										<div class="card-body">
+											<a href="javascript:void(0)" class="card-title">精选句集</a>
+											<p class="card-text text-muted">精心整理，各种佳句分类合集</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-body row text-left" style="padding:5px; margin:0;">
+							<div class="card shadow-sm" style="margin-left:1%; width:32%;">
+								<div class="row no-gutters find_img" style="width:100%;">
+									<div class="col-sm-4">
+										<img src="/img/电影台词.png" class="card-img" alt="电影台词">
+									</div>
+									<div class="col-md-8">
+										<div class="card-body">
+											<a href="javascript:void(0)" class="card-title">电影台词</a>
+											<p class="card-text text-muted">跃入屏幕，重温经典对白</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card shadow-sm" style="margin:0 1% 0 1%; width:32%;">
+								<div class="row no-gutters find_img" style="width:100%;">
+									<div class="col-sm-4">
+										<img src="/img/小说摘抄.png" class="card-img" alt="小说摘抄">
+									</div>
+									<div class="col-md-8">
+										<div class="card-body">
+											<a href="javascript:void(0)" class="card-title">小说摘抄</a>
+											<p class="card-text text-muted">好文成瘾，美文摘抄大全</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card shadow-sm" style="width:32%;">
+								<div class="row no-gutters find_img" style="width:100%;">
+									<div class="col-sm-4">
+										<img src="/img/美图美句.png" class="card-img" alt="美图美句">
+									</div>
+									<div class="col-md-8">
+										<div class="card-body">
+											<a href="javascript:void(0)" class="card-title">美图美句</a>
+											<p class="card-text text-muted">美文配美景，赏心悦目</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<ul class="row form-inline" style="margin-bottom:5px;">
+							<li class="col"><a href="javascript:void(0)"><small class="text-muted">《重燃》小说摘抄</small></a></li>
+							<li class="col"><a href="javascript:void(0)"><small class="text-muted">《儒道至圣》小说摘抄</small></a></li>
+							<li class="col"><a href="javascript:void(0)"><small class="text-muted">《大王饶命》小说摘抄</small></a></li>
+							<li class="col"><a href="javascript:void(0)"><small class="text-muted">《一念永恒》小说摘抄</small></a></li>
+						</ul>
+					</div>
+					
+					<!-- 选项卡菜单-->
+					<ul id="myTab" class="nav nav-tabs" role="tablist">
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<li class="nav-item">
+							<a id="rm" href="#RecommendedMind" class="nav-link active" role="tab" data-toggle="tab">推荐心语</a>
+						</li>&nbsp;
+						<li class="nav-item">
+							<a id="lr" href="#LatestRelease" class="nav-link" role="tab" data-toggle="tab">最新发布</a>
+						</li>&nbsp;
+						<li class="nav-item">
+							<a id="ht" href="#HotToday" class="nav-link" role="tab" data-toggle="tab">今日热门</a>
+						</li>&nbsp;
+						<li class="nav-item">
+							<a id="mp" href="#MostPopular" class="nav-link" role="tab" data-toggle="tab">最受欢迎</a>
+						</li>
+					</ul>
+					<!-- 选项卡面板 -->
+					<div id="myTabContent" class="tab-content border">
+						<!-- 推荐心语页面 -->
+						<div class="tab-pane active" id="RecommendedMind"></div>
+						<!-- 最新发布页面 -->
+						<div class="tab-pane" id="LatestRelease"></div>
+						<!-- 今日热门页面 -->
+						<div class="tab-pane" id="HotToday"></div>
+						<!-- 最受欢迎页面 -->
+						<div class="tab-pane" id="MostPopular"></div>
+					</div>
+					
+					<!-- 分页栏 -->
+					<nav id="myTabNav" aria-label="Page navigation" style="margin:20px;">
+						<ul class="pagination justify-content-center">
+							<li class="page-item">
+								<a class="page-link" href="javascript:void(0)" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+							<li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+							<li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+							<li class="page-item"><a class="page-link" href="javascript:void(0)">4</a></li>
+							<li class="page-item"><a class="page-link" href="javascript:void(0)">5</a></li>
+							<li class="page-item">
+								<a class="page-link" href="javascript:void(0)" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				
+				<!-- 基础功能、信息 -->
+				<div class="col-sm-4" style="padding:0 10px 0 5px;">
+					<!-- 登录/注册 -->
+					<div id="NotLogin" class="card text-center shadow" style="margin: 10px 0px 10px 0px; height:210px;">
+						<div class="card-body" style="padding: 10px 20px 20px 20px;">
+							<table id="NotLoginTable" class='table table-hover'>
+								<tbody>
+									<tr class='row'>
+										<td class='col-sm-3'>账号：<font color="red">*</font></td>
+										<td class="col-sm-9"><input type="text" id="name" style="width:90%;"></td>
+									</tr>
+									<tr class='row'>
+										<td class='col-sm-3'>密码：<font color="red">*</font></td>
+										<td class="col-sm-9"><input type="password" id="password" style="width:90%;"></td>
+									</tr>
+									<tr class='row'>
+										<td class="col-sm-12">
+											<button id="register" class="btn btn-primary" style="width:40%;">快速注册</button>
+											&nbsp;&nbsp;&nbsp;
+											<button id="login" class="btn btn-primary" style="width:40%;">登录</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<!-- 个人信息 -->
+					<div id="AlreadyLogin" class="card text-center shadow" style="margin: 10px 0px 10px 0px;">
+						<div class="card-body" style="padding:0;">
+							<div id="BasicDataDiv"></div>
+						</div>
+					</div>
+					
+					<!-- 发布句子 -->
+					<div class="card text-center shadow" style="margin: 10px 0px 10px 0px;">
+						<div class="card-body" style="padding: 10px 20px 20px 20px;">
+							<p><small>有自己喜欢的句子？来发布吧</small></p>
+							<button id="publishSentenceBtn" class="btn btn-lg btn-primary">发布句子</button>
+						</div>
+					</div>
+					
+					<!-- 句星 -->
+					<div class="card text-center shadow" style="margin: 10px 0px 10px 0px;">
+						<div class="card-header" style="padding:1px 1px 1px 1px;">
+							<p class="p_sm_title">句星 | Sentence star</p>
+						</div>
+						<div class="card-body">
+							<div class="card-columns" style="padding:10px 30px 0 30px;">
+								<a href="javascript:void(0)">
+									<div class="card">
+										<img src="/img/head_portrait/柳下挥.jpg" class="card-img-top rounded-circle" alt="柳下挥">
+										<div class="card-body">
+											<p class="card-text p_work">柳下挥</p>
+										</div>
+									</div>
+								</a>
+								<a href="javascript:void(0)">
+									<div class="card">
+										<img style="border:5px solid white;" src="/img/head_portrait/天上无鱼.jpg" class="card-img-top rounded-circle" alt="天上无鱼">
+										<div class="card-body">
+											<p class="card-text p_work">天上无鱼</p>
+										</div>
+									</div>
+								</a>
+								<a href="javascript:void(0)">
+									<div class="card">
+										<img src="/img/head_portrait/会说话的肘子.jpg" class="card-img-top rounded-circle" alt="会说话的肘子">
+										<div class="card-body">
+											<p class="card-text p_work">会说话的肘子</p>
+										</div>
+									</div>
+								</a>
+								<a href="javascript:void(0)">
+									<div class="card">
+										<img src="/img/head_portrait/奥尔良烤鲟鱼堡.jpg" class="card-img-top rounded-circle" alt="奥尔良烤鲟鱼堡">
+										<div class="card-body">
+											<p class="card-text p_work">奥尔良烤鲟鱼堡</p>
+										</div>
+									</div>
+								</a>
+								<a href="javascript:void(0)">
+									<div class="card">
+										<img src="/img/head_portrait/永恒之火.jpg" class="card-img-top rounded-circle" alt="永恒之火">
+										<div class="card-body">
+											<p class="card-text p_work">永恒之火</p>
+										</div>
+									</div>
+								</a>
+								<a href="javascript:void(0)">
+									<div class="card">
+										<img src="/img/head_portrait/耳根.jpg" class="card-img-top rounded-circle" alt="耳根">
+										<div class="card-body">
+											<p class="card-text p_work">耳根</p>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<!-- 底部声明 -->
+		<div id="toSdiv" style="height:5%;" class="col-sm-12"></div>
+	</div>
+		
+	<!-- 空白模态框Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+			<div class="modal-content" style="padding:10px;">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="myModalBody">
+					
+				</div>
+<!-- 				<div class="modal-footer"> -->
+<!-- 					<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button> -->
+<!-- 					<button type="button" class="btn btn-primary">Save changes</button> -->
+<!-- 				</div> -->
+			</div>
+		</div>
+	</div>
+	
+	
+</body>
+</html>
+
+
+

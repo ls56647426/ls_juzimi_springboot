@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>注册账户</title>
+	<meta charset = "UTF-8" />
+	<!-- 引入主题样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/default/easyui.css}" />
+	<!-- 引入图标样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/icon.css}" />
+	<!-- 自定义顶部导航样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/northNav.css}" />
+	<!-- 自定义提交菜单样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/form.css}" />
+	<!-- 自定义底部声明样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/southStatement.css}" />
+</head>
+<body class = "easyui-layout">
+	<!-- 北 -->
+	<div id = "ndiv" data-options = "region: 'north'">
+		<ul>
+			<li style = "color: white; width: 140px;">
+					<img style = "vertical-align:middle; width:40px; height:40px;" th:src="@{/img/juzimi.jpg}">
+					账号操作
+			</li>
+			<li><a th:href="@{/juzimi/user/register}">注册账号</a></li>
+			<li><a th:href="@{/juzimi/user/findUserById?id=${user.id}}">修改密码</a></li>
+		</ul>
+	</div>
+	<!-- 南 -->
+	<div id = "sdiv" data-options = "region: 'south', border: false", style = "height: 5%;">
+		&copy;2019/11 龙少句子迷，仿冒必究
+	</div>
+	<!-- 中 -->
+	<div data-options = "region: 'center'">
+		<div id = "panel_register" style = "margin: auto; width: 500px; margin-top: 80px;">
+			<!-- 创建登录面板 -->
+			<div id = "register" class = "easyui-panel" title = "注册用户" data-options = "iconCls: 'icon-man'"
+				style = "width: 500px; height: 380px;">
+				<form th:action = "@{/juzimi/user/addUser}" method = "post">
+					<table>
+						<tr>
+							<td>*账号：</td>
+							<td><input type = "text" name = "name" /></td>
+							<td><font color = "red" th:errors = "${user.name}"></font></td>
+						</tr>
+						<tr>
+							<td>*密码：</td>
+							<td><input type = "text" name = "password" /></td>
+							<td><font color = "red" th:errors = "${user.password}"></font></td>
+						</tr>
+						<tr>
+							<td>*昵称：</td>
+							<td><input type = "text" name = "nickname" /></td>
+							<td><font color = "red" th:errors = "${user.nickname}"></font></td>
+						</tr>
+						<tr>
+							<td>性别：</td>
+							<td><input type = "text" name = "sex" /></td>
+							<td><font color = "red" th:errors = "${user.sex}"></font></td>
+						</tr>
+						<tr>
+							<td>出生日期：</td>
+							<td><input type = "text" name = "borthday" /></td>
+							<td><font color = "red" th:errors = "${user.borthday}"></font></td>
+						</tr>
+						<tr>
+							<td>*手机号：</td>
+							<td><input type = "text" name = "mobile" /></td>
+							<td><font color = "red" th:errors = "${user.mobile}"></font></td>
+						</tr>
+						<tr>
+							<td colspan = "3">
+								<a id="btnCon" href = "javascript:void(0)" class = "easyui-linkbutton"
+									data-options = "iconCls:'icon-save'">注册</a>
+								&nbsp;&nbsp;&nbsp;
+								<a id = "btnCan" href = "javascript:void(0)" class = "easyui-linkbutton"
+									data-options = "iconCls: 'icon-cancel'">重置</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 引入jQuery文件 -->
+	<script th:src = "@{/js/libs/jquery.min.js}" type = "text/javascript" charset = "UTF-8"></script>
+	<!-- 引入EasyUi的js文件 -->
+	<script th:src = "@{/js/libs/jquery.easyui.min.js}" type = "text/javascript" charset = "UTF-8"></script>
+	<!-- 引入loadingDiv.js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/loadingDiv.js}" charset = "UTF-8"></script>
+	<!-- 声明js代码域 -->
+	<script type="text/javascript">
+		//注册
+		$(function(){
+			//提交
+			$("#btnCon").click(function(){
+				$("form").get(0).submit();
+			})
+			//重置
+			$("#btnCan").click(function(){
+				$("form").get(0).reset();
+			})
+		})
+	</script>
+</body>
+</html>

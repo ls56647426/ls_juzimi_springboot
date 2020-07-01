@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>龙少的个人主页 | 句子迷 | 美句佳句大全,您的句子摘抄本</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- 网页图标 -->
+	<link rel="shortcut icon" href="/img/ico/favicon.ico" type="image/x-icon">
+	
+	<!-- bootstrap的css文件 -->
+	<link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- 自定义前端主题样式 -->
+	<link rel="stylesheet" type="text/css" href="/css/apps/foreTheme.css" />
+	
+	<!-- 自定义css样式 -->
+	<link rel="stylesheet" type="text/css" href="/css/apps/profile.css"/>
+	
+	<!-- bootstrap框架的js文件 -->
+	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/webjars/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	
+	<!-- 引入自定义status结果的js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/status.js}" charset = "UTF-8"></script>
+	
+	<!-- 自定义ajax函数封装 -->
+	<script type="text/javascript" src="/js/apps/ajaxUtils.js" charset="UTF-8"></script>
+	
+	<!-- 自定义函数封装 -->
+	<script type="text/javascript" src="/js/apps/profile.js" charset="UTF-8"></script>
+</head>
+<body class="container-fluid">
+	<div class="row">
+		<!-- 顶部导航栏 -->
+		<div id="majorNav" class="col-sm-9" style="margin:0 auto; padding:0;"></div>
+		
+	
+		<!-- 整体栅格布局 -->
+		<div class="container-fluid col-sm-9" style="margin:0 auto;">
+			<div class="row">
+				<!-- 主要信息 -->
+				<div class="col-sm-8" style="padding:0 5px 0 0;">
+					<!-- 选项卡菜单-->
+					<ul id="myTab" class="nav nav-tabs" role="tablist">
+						&nbsp;&nbsp;&nbsp;&nbsp; 
+						<li class="nav-item">
+							<a id="ph" href="#PersonalHomepage" class="nav-link active" role="tab" data-toggle="tab">个人主页</a>
+						</li>&nbsp;
+						<li class="nav-item">
+							<a id="ms" href="#MySentence" class="nav-link" role="tab" data-toggle="tab">句子</a>
+						</li>&nbsp;
+						<li class="nav-item">
+							<a id="mss" href="#MySentenceSet" class="nav-link" role="tab" data-toggle="tab">句集</a>
+						</li>&nbsp;
+						<li class="nav-item">
+							<a id="c" href="#Concern" class="nav-link" role="tab" data-toggle="tab">关注</a>
+						</li>&nbsp;
+						<li class="nav-item">
+							<a id="f" href="#Fans" class="nav-link" role="tab" data-toggle="tab">粉丝</a>
+						</li>&nbsp;
+						<li class="nav-item">
+							<a id="d" href="#Dynamic" class="nav-link" role="tab" data-toggle="tab">动态</a>
+						</li>
+					</ul>
+					<!-- 选项卡面板 -->
+					<div id="myTabContent" class="tab-content border">
+						<!-- 个人主页页面 -->
+						<div class="tab-pane active" id="PersonalHomepage" style="padding:20px;">
+							
+						</div>
+						<!-- 句子页面 -->
+						<div class="tab-pane" id="MySentence">句子</div>
+						<!-- 句集页面 -->
+						<div class="tab-pane " id="MySentenceSet">句集</div>
+						<!-- 关注页面 -->
+						<div class="tab-pane " id="Concern">关注</div>
+						<!-- 粉丝页面 -->
+						<div class="tab-pane " id="Fans">粉丝</div>
+						<!-- 动态页面 -->
+						<div class="tab-pane " id="Dynamic">动态</div>
+					</div>
+				</div>
+				
+				<!-- 次要信息 -->
+				<div class="col-sm-4" style="padding:0 10px 0 5px;">
+					<!-- 基本资料 -->
+					<div id="BasicDataDiv" style="margin: 10px 0px 10px 0px;"></div>
+				</div>
+			</div>
+		</div>
+	
+		<!-- 底部声明 -->
+		<div id="toSdiv" style="height:5%;" class="col-sm-12"></div>
+	</div>
+		
+	<!-- 空白模态框Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+			<div class="modal-content" style="padding:10px;">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="myModalBody">
+					
+				</div>
+<!-- 				<div class="modal-footer"> -->
+<!-- 					<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button> -->
+<!-- 					<button type="button" class="btn btn-primary">Save changes</button> -->
+<!-- 				</div> -->
+			</div>
+		</div>
+	</div>
+	
+	
+</body>
+</html>
+
+
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>修改密码</title>
+	<meta charset = "UTF-8" />
+	<!-- 引入主题样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/default/easyui.css}" />
+	<!-- 引入图标样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/icon.css}" />
+	<!-- 自定义顶部导航样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/northNav.css}" />
+	<!-- 自定义提交菜单样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/form.css}" />
+	<!-- 自定义底部声明样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/southStatement.css}" />
+</head>
+<body class = "easyui-layout">
+	<!-- 北 -->
+	<div id = "ndiv" data-options = "region: 'north'">
+		<ul>
+			<li style = "color: white; width: 140px;">
+					<img style = "vertical-align:middle; width:40px; height:40px;" th:src="@{/img/juzimi.jpg}">
+					账号操作
+			</li>
+			<li><a th:href="@{/juzimi/user/register}">注册账号</a></li>
+			<li><a th:href="@{/juzimi/user/findUserById?id=${user.id}}">修改密码</a></li>
+		</ul>
+	</div>
+	<!-- 南 -->
+	<div id = "sdiv" data-options = "region: 'south', border: false", style = "height: 5%;">
+		&copy;2019/11 龙少句子迷，仿冒必究
+	</div>
+	<!-- 中 -->
+	<div data-options = "region: 'center'">
+		<div id = "panel_update" style = "margin: auto; width: 100%;">
+			<!-- 创建修改面板 -->
+			<div id = "pwd" class = "easyui-panel" title = "修改个人资料" data-options = "iconCls: 'icon-man'"
+				style = "width: 100%; height: 100%;">
+				<form th:action = "@{/juzimi/user/updateUser}" method = "post">
+					<input type = "hidden" name = "id" th:field = "${user.id}" />
+					<table>
+						<tr>
+							<td>账号：</td>
+							<td><input type = "text" name = "name" th:field = "${user.name}" readonly = "readonly" /></td>
+							<td><font color = "red" th:errors = "${user.name}"></font></td>
+						</tr>
+						<tr>
+							<td>密码：</td>
+							<td><input type = "text" name = "password" id = "password" maxlength = "18" /></td>
+							<td><font color = "red" th:errors = "${user.password}"></font></td>
+							<td><a href = "#" id = "pwdA">隐藏密码</a></td>
+						</tr>
+						<tr>
+							<td>昵称：</td>
+							<td><input type = "text" name = "nickname" th:field = "${user.nickname}" /></td>
+							<td><font color = "red" th:errors = "${user.nickname}"></font></td>
+						</tr>
+						<tr>
+							<td>性别：</td>
+							<td><input type = "text" name = "sex" th:field = "${user.sex}" /></td>
+							<td><font color = "red" th:errors = "${user.sex}"></font></td>
+						</tr>
+						<tr>
+							<td>出生日期：</td>
+							<td><input type = "text" name = "borthday" th:field = "${user.borthday}" /></td>
+							<td><font color = "red" th:errors = "${user.borthday}"></font></td>
+						</tr>
+						<tr>
+							<td>手机号：</td>
+							<td><input type = "text" name = "mobile" th:field = "${user.mobile}" id = "mobile" maxlength = "11" /></td>
+							<td><font color = "red" th:errors = "${user.mobile}"></font></td>
+							<td><a href = "#" id = "mobileA">隐藏手机号</a></td>
+						</tr>
+						<tr>
+							<td colspan = "3">
+								<a id="btnCon" href = "javascript:void(0)" class = "easyui-linkbutton"
+									data-options = "iconCls:'icon-save'">修改</a>
+								&nbsp;&nbsp;&nbsp;
+								<a id = "btnCan" href = "javascript:void(0)" class = "easyui-linkbutton"
+									data-options = "iconCls: 'icon-cancel'">重置</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 引入jQuery文件 -->
+	<script th:src = "@{/js/libs/jquery.min.js}" type = "text/javascript" charset = "UTF-8"></script>
+	<!-- 引入EasyUi的js文件 -->
+	<script th:src = "@{/js/libs/jquery.easyui.min.js}" type = "text/javascript" charset = "UTF-8"></script>
+	<!-- 引入loadingDiv.js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/loadingDiv.js}" charset = "UTF-8"></script>
+	<!-- 声明js代码域 -->
+	<script type="text/javascript">
+		//修改
+		$(function(){
+			//提交
+			$("#btnCon").click(function(){
+				$("form").get(0).submit();
+			})
+			//重置
+			$("#btnCan").click(function(){
+				$("form").get(0).reset();
+			})
+			//显示/隐藏密码
+			$("#pwdA").click(function(){
+				if ($("#password").attr("type") == "password") {
+					$("#password").attr("type", "text");
+					$("#pwdA").text("隐藏密码");
+				}
+				else {
+					$("#password").attr("type", "password");
+					$("#pwdA").text("显示密码");
+				}
+			})
+			//显示/隐藏手机号
+			$("#mobileA").click(function(){
+				if ($("#mobile").attr("type"), "password") {
+					$("#mobile").attr("type", "text");
+					$("#mobileA").text("隐藏手机号");
+				}
+				else {
+					$("#mobile").attr("type", "password");
+					$("#mobileA").text("显示手机号");
+				}
+			})
+		})
+	</script>
+</body>
+</html>

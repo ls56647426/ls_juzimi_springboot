@@ -1,0 +1,126 @@
+<meta charset="UTF-8" />
+
+<!-- 自定义前端主题样式 -->
+<link rel="stylesheet" type="text/css" href="/css/apps/foreTheme.css" />
+
+<!-- 自定义顶部导航样式 -->
+ <link rel="stylesheet" type="text/css" href="/css/apps/northNav.css" /> 
+
+<!-- 自定义css样式 -->
+<link rel="stylesheet" type="text/css" href="/css/apps/majorNav.css"/>
+
+<!-- 引入自定义status结果的js文件 -->
+<script type = "text/javascript" th:src = "@{/js/apps/status.js}" charset = "UTF-8"></script>
+
+<!-- 自定义函数封装 -->
+<script type="text/javascript" src="/js/apps/majorNav.js" charset="UTF-8"></script>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3" style="padding:15px 0;">
+			<img alt="句子迷" src="/img/juzimi1.png" style="width:100%;">
+		</div>
+		<div class="col-sm-9" style="font-size:14px;">
+			<div class="row">
+				<div class="col-sm-10 d-sm-inline-flex flex-row-reverse" style="width:100%;">
+					<ul class="nav border" style="background-color:#F4F4F4; padding:5px; border-radius:0 0 10px 10px;">
+						欢迎你&nbsp;
+						<li class="nav-item NotLogin"><a id="login1" href="javascript:void(0)" class="p_work">登 录</a></li>
+						<li class="nav-item NotLogin"><a id="register1" href="javascript:void(0)" style="color:#F07B0A;">快速注册</a></li>
+						<li class="nav-item NotLogin"><a href="javascript:void(0)" class="p_work">发布句子</a></li>
+						<li class="nav-item NotLogin"><a href="javascript:void(0)" class="p_work"><img alt="微博" src="/img/微博.png" width="20px" >微博登录</a></li>
+						<li class="nav-item NotLogin"><a href="javascript:void(0)" class="p_work"><img alt="QQ" src="/img/QQ.png" width="20px" >QQ登录</a></li>
+						<li class="nav-item AlreadyLogin"><a href="javascript:void(0)" id="userHeadPortrait" class="p_work">龙少</a></li>
+						<li class="nav-item AlreadyLogin"><a th:href="@{/juzimi/profile}" class="p_work">我的主页</a></li>
+						<li class="nav-item AlreadyLogin"><a id="logout1" href="javascript:void(0)" class="p_work">退出登录</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-2" style="padding:0 5px 0 0;">
+					<div class="text-center" style="margin-top:5px;">
+						<a href="javascript:void(0)" style="color:#212529;">
+							<img alt="手机" src="/img/手机.png" width="15px" />
+							手机版
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top:10px; height:30px;">
+				<div id="search" class="input-group col-md-8">
+					<input id="search" type="text" class="form-control" placeholder="搜索美句佳句、经典语录、名人名言" style="height:30px;" />
+					<span class="input-group-btn">&nbsp;
+						<button class="btn btn-info btn-success" style="height:30px; padding:0 5px; font-size:14px;">搜索</button>
+					</span>
+				</div>
+				<div class="col-sm-4 d-sm-inline-flex flex-row-reverse" style="width:100%;">
+					<ul class="nav" style="margin:10px 20px 0 0;">
+						<li><a href="javascript:void(0)" class="p_work">推荐</a></li>&ensp;|&ensp;
+						<li><a href="javascript:void(0)" class="p_work">最新</a></li>&ensp;|&ensp;
+						<li><a href="javascript:void(0)" class="p_work">热门</a></li>&ensp;|&ensp;
+						<li><a href="javascript:alert('请使用Ctrl+D加入收藏夹');" title="把句子迷加入您的收藏夹" style="color:#212529;">收藏本站</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+</div>
+
+<ul class="nav nav-tabs nav-pills nav-justified my_top_nav">
+			<li class="nav-item">
+				<a class="nav-link disabled" href="javascript:void(0)" tabindex="-1" aria-disabled="true"></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{/juzimi/}">
+					<img alt="句子迷" src="/img/juzimi.jpg" width="24px" height="24px">&nbsp;&nbsp;
+					首页
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="javascript:void(0)">偶遇佳句</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">名人名句</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="javascript:void(0)">小说摘抄</a>
+					<a class="dropdown-item" href="javascript:void(0)">散文美句</a>
+					<a class="dropdown-item" href="javascript:void(0)">动漫语录</a>
+					<a class="dropdown-item" href="javascript:void(0)">连续剧台词</a>
+					<a class="dropdown-item" href="javascript:void(0)">名人名言</a>
+					<a class="dropdown-item" href="javascript:void(0)">经典语录</a>
+					<a class="dropdown-item" href="javascript:void(0)">热门名人</a>
+					<a class="dropdown-item" href="javascript:void(0)">书籍名句</a>
+					<a class="dropdown-item" href="javascript:void(0)">电影台词</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">原创句子</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="javascript:void(0)">推荐原创</a>
+					<a class="dropdown-item" href="javascript:void(0)">最新原创</a>
+					<a class="dropdown-item" href="javascript:void(0)">热门原创</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">精选句集</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="javascript:void(0)">精选句集</a>
+					<a class="dropdown-item" href="javascript:void(0)">最新句集</a>
+					<a class="dropdown-item" href="javascript:void(0)">我的句集</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">美图美句</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="javascript:void(0)">美图美句</a>
+					<a class="dropdown-item" href="javascript:void(0)">手写美句</a>
+					<a class="dropdown-item" href="javascript:void(0)">经典对白</a>
+				</div>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="javascript:void(0)">寻找知音</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link disabled" href="javascript:void(0)" tabindex="-1" aria-disabled="true"></a>
+			</li>
+		</ul>

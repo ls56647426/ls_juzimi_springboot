@@ -1,0 +1,59 @@
+.find_img{
+	width: 279px;
+	height: 111px;
+}
+.find_img img{
+	margin: 5px 10px;
+}
+
+.card .shadow-sm{
+	background-color: #F6F6F6;
+	height: 70px;
+}
+.card .shadow-sm .card-body{
+	padding-left:0;
+	padding-right:0;
+}
+.card .shadow-sm .card-img{
+	margin: 0;
+	padding: 5px;
+}
+.card .shadow-sm a.card-title{
+	font-family: SimHei;
+	font-weight: 700;
+	font-size: 16px;
+	color: black;
+}
+.card .shadow-sm p.card-text{
+	margin-top: 5px;
+	font-size: 12px;
+}
+
+a .find_img{
+	color: #212564;
+}
+a:hover .find_img{
+	color: black;
+}
+
+.card-body{
+	padding:10px 5px 10px 5px;
+}
+.tab-content > .tab-pane {
+	display: none;
+}
+.tab-content > .active {
+	display: block;
+}
+
+
+
+.my_sentence_card{
+	padding: 20px;
+	margin: 20px;
+}
+
+.my_sentence_sub_tab{
+	margin: 0 20px;
+}
+

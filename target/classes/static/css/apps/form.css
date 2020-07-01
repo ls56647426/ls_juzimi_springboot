@@ -1,0 +1,11 @@
+/*
+ * 登录表单表格样式
+ */
+table{
+	margin: auto;
+	margin-top: 20px;
+}
+tr{
+	height: 40px;
+	text-align: center;
+}

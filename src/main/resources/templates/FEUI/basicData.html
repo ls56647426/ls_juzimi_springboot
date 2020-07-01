@@ -1,0 +1,49 @@
+<meta charset="UTF-8" />
+
+<!-- 自定义css样式 -->
+<link rel="stylesheet" type="text/css" href="/css/apps/basicData.css"/>
+
+<!-- 自定义函数封装 -->
+<script type="text/javascript" src="/js/apps/basicData.js" charset="UTF-8"></script>
+
+<div id="BasicData" class="card text-center shadow" style="margin:0;">
+	<div class="card-header" style="padding:1px 1px 1px 1px;">
+		<p class="p_sm_title">龙少的基本资料</p>
+	</div>
+	<div class="card-body">
+		<!-- 个人简介 -->
+		<table style="width:100%;" class="table table-sm table-borderless">
+			<tbody>
+				<tr>
+					<td rowspan="3"><img id="HeadPortrait" src='' class='card-img img-fluid img-thumbnail' alt='头像' style="width:100px;"></td>
+					<td><strong id="NicknameStrong" style="font-size:12px;"></strong></td>
+				</tr>
+				<tr>
+					<td id="BriefIntroduction" style="font-size:12px;"></td>
+				</tr>
+				<tr style="font-size:12px;">
+					<td style="padding-top:20px;"><a href="javascript:void(0)">关注&nbsp;&nbsp;<span id="ConcernNumber"></span></a></td>
+					<td style="padding-top:20px;"><a href="javascript:void(0)">粉丝&nbsp;&nbsp;<span id="FansNumber"></span></a></td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- 个人句库 -->
+		<div id="SentenceBankNumberDiv">
+			<div id="SentenceBankNumberTitle" class="text-muted">个人句库</div>
+			<table class="table table-sm table-border" title="个人句库">
+				<tbody>
+					<tr style="font-size:12px;">
+						<td	style="border-top:none;"><a href="javascript:void(0)">句库&nbsp;&nbsp;<span id="SentenceBankNumber" style="font-size:14px;"></span></a></td>
+						<td style="border-top:none;">&nbsp;</td>
+						<td style="border-top:none;"><a href="javascript:void(0)">原创&nbsp;&nbsp;<span id="OriginalNumber"></span></a></td>
+					</tr>
+					<tr style="font-size:12px;">
+						<td><a href="javascript:void(0)">句集&nbsp;&nbsp;<span id="SentenceSetNumber" style="font-size:14px;"></span></a></td>
+						<td>&nbsp;</td>
+						<td><a href="javascript:void(0)">留言&nbsp;&nbsp;<span id="LeavingMessagesNumber"></span></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

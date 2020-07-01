@@ -1,0 +1,35 @@
+@charset "UTF-8";
+.p_work{
+	color: #79BA54;
+	font-size: 14px;
+	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.p_sm_title{
+	margin:0; font-weight:700; color:white; background-color:#F07B0A;
+}
+
+#myTab{
+	background-color: white;
+}
+#myTab li{
+	float: left;
+	text-align: center;
+	list-style: none;
+}
+#myTab a{
+	display: block;
+	color: #FF8B40;
+	border: 1px solid #EFEFEF;
+	background-color: #EFEFEF;
+}
+#myTab a:hover{
+	border: 1px solid #FF8B40;
+}
+#myTab a.nav-link.active{
+	background-color: #F07B0A;
+	color: white;
+}

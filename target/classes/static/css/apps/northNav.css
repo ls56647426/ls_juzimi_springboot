@@ -1,0 +1,62 @@
+/*
+ * 去掉超链接下划线
+ */
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+
+/*
+ * 导航栏样式
+ */
+.my_top_nav{
+	background-color: #FF8B40;
+}
+.my_top_nav li{
+	float: left;
+	text-align: center;
+	list-style: none;
+}
+.my_top_nav a{
+	display: block;
+	color: white;
+}
+.my_top_nav a:hover{
+	background-color: #F07B0A;
+}
+.my_top_nav a.nav-link.active{
+	background-color: #F07B0A;
+}
+
+/*修改导航栏标签单机下拉时的下一级菜单背景颜色*/
+.my_top_nav .show, .my_top_nav .dropdown-menu{
+	background-color: #FF8B40;
+}
+
+/*修改导航栏标签单机下拉时该标签背景颜色*/
+.nav-tabs .nav-item.show .nav-link{
+	background-color: #F07B0A;
+}
+
+#ndiv{
+	background-color: #FF8B40;
+}
+#ndiv ul{
+	margin:0;
+}
+#ndiv li{
+	float: left;
+	text-align: center;
+	list-style: none;
+	line-height: 56px;
+	width: 100px;
+}
+#ndiv a{
+	display: block;
+	color: white;
+}
+#ndiv a:hover{
+	background-color: #F07B0A;
+}

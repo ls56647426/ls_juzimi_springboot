@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/error.css}" />
+	<title>错误提示页面</title>
+</head>
+<body>
+	<div>
+		<h3>出错了，请与管理员联系……</h3>
+		<h4>
+			异常信息类型：
+			<span th:text = "${error}"></span>
+			<br/>
+			出现异常的地址：
+			<span th:text = "${url}"></span>
+		</h4>
+		<ul>
+			联系方式如下：
+			<li>QQ：2356732870</li>
+			<li>电话：13244434212</li>
+			<li>Emall：ls56647426@foxmail.com</li>
+		</ul>
+	</div>
+</body>
+</html>

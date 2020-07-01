@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+.NotLogin, .AlreadyLogin{
+	margin: 0 5px;
+}

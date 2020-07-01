@@ -1,0 +1,84 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
+	<diskStore path="java.io.tmpdir" />
+	
+	<!--defaultCache:echcache 的默认缓存策略 -->
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</defaultCache>
+	
+	<!-- 自定义用户缓存策略 -->
+	<cache name="user" maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<!-- 自定义分类缓存策略 -->
+	<cache name="category" maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<!-- 自定义句子缓存策略 -->
+	<cache name="sentence" maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<!-- 自定义句集缓存策略 -->
+	<cache name="sentence_set" maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<!-- 自定义加入句集缓存策略 -->
+	<cache name="join_sentence_set" maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<!-- 自定义喜欢句子缓存策略 -->
+	<cache name="like_sentence" maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<!-- 自定义喜欢句集缓存策略 -->
+	<cache name="like_sentence_set" maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<!-- 自定义评论缓存策略 -->
+	<cache name="review" maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<!-- 自定义评论缓存策略 -->
+	<cache name="work" maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</cache>
+</ehcache>

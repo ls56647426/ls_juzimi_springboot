@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+#SentenceBankNumberDiv{
+    padding:5px 30px;
+    border:1px solid #DEE2E6;
+}
+#SentenceBankNumberTitle{
+    display:block;
+    width:70px;
+    height:20px;
+    position:relative;
+    top:-15px;
+    text-align: center;
+    background: white;
+}

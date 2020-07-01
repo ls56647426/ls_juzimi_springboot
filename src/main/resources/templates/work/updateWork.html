@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>修改作品</title>
+	<meta charset = "UTF-8" />
+	<!-- 引入主题样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/default/easyui.css}" />
+	<!-- 引入图标样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/icon.css}" />
+	<!-- 自定义顶部导航样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/northNav.css}" />
+	<!-- 自定义提交菜单样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/form.css}" />
+	<!-- 自定义底部声明样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/southStatement.css}" />
+</head>
+<body class = "easyui-layout">
+	<!-- 北 -->
+	<div id = "ndiv" data-options = "region: 'north'">
+		<ul>
+			<li style = "color: white; width: 140px;">
+					<img style = "vertical-align:middle; width:40px; height:40px;" th:src="@{/img/juzimi.jpg}">
+					作品操作
+			</li>
+			<li><a th:href="@{/juzimi/work/publishWork}">发布作品</a></li>
+			<li><a th:href="@{/juzimi/work/findWorkById?id=${work.id}}">修改作品</a></li>
+		</ul>
+	</div>
+	<!-- 南 -->
+	<div id = "sdiv" data-options = "region: 'south', border: false", style = "height: 5%;">
+		&copy;2019/11 龙少句子迷，仿冒必究
+	</div>
+	<!-- 中 -->
+	<div data-options = "region: 'center'">
+		<div id = "panel_update" style = "margin: 50px auto; width: 50%;">
+			<!-- 创建修改面板 -->
+			<div id = "cg" class = "easyui-panel" title = "修改作品" data-options = "iconCls: 'icon-man'"
+				style = "width: 100%; height: 100%;">
+				<form th:action = "@{/juzimi/work/updateWork}" method = "post" accept-charset = "UTF-8"
+					οnsubmit = "document.charset = 'UTF-8'">
+					<input type = "hidden" name = "id" th:field = "${work.id}" />
+					<table>
+						<tr>
+							<td>作品名：</td>
+							<td><input type = "text" name = "name" th:field = "${work.name}" /></td>
+							<td><font color = "red" th:errors = "${work.name}"></font></td>
+						</tr>
+						<tr>
+							<td>描述：</td>
+							<td><textarea name = "descriptions" style = "height: 200px; width: 400px;"
+								th:field = "${work.descriptions}"></textarea></td>
+							<td><font color = "red" th:errors = "${work.descriptions}"></font></td>
+						</tr>
+						<tr>
+							<td colspan = "3">
+								<a id="btnCon" href = "javascript:void(0)" class = "easyui-linkbutton"
+									data-options = "iconCls:'icon-save'">修改</a>
+								&nbsp;&nbsp;&nbsp;
+								<a id = "btnCan" href = "javascript:void(0)" class = "easyui-linkbutton"
+									data-options = "iconCls: 'icon-cancel'">重置</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 引入jQuery文件 -->
+	<script th:src = "@{/js/libs/jquery.min.js}" type = "text/javascript" charset = "UTF-8"></script>
+	<!-- 引入EasyUi的js文件 -->
+	<script th:src = "@{/js/libs/jquery.easyui.min.js}" type = "text/javascript" charset = "UTF-8"></script>
+	<!-- 引入loadingDiv.js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/loadingDiv.js}" charset = "UTF-8"></script>
+	<!-- 声明js代码域 -->
+	<script type="text/javascript">
+		//修改
+		$(function(){
+			//提交
+			$("#btnCon").click(function(){
+				$("form").get(0).submit();
+			})
+			//重置
+			$("#btnCan").click(function(){
+				$("form").get(0).reset();
+			})
+		})
+	</script>
+</body>
+</html>

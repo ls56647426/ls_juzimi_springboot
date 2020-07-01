@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>添加评论</title>
+	<meta charset = "UTF-8" />
+	<!-- 引入主题样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/default/easyui.css}" />
+	<!-- 引入图标样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/icon.css}" />
+	<!-- 自定义顶部导航样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/northNav.css}" />
+	<!-- 自定义提交菜单样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/form.css}" />
+	<!-- 自定义底部声明样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/southStatement.css}" />
+</head>
+<body class = "easyui-layout">
+	<!-- 北 -->
+	<div id = "ndiv" data-options = "region: 'north'">
+		<ul>
+			<li style = "color: white; width: 140px;">
+					<img style = "vertical-align:middle; width:40px; height:40px;" th:src="@{/img/juzimi.jpg}">
+					评论操作
+			</li>
+			<li><a th:href="@{/juzimi/review/publishReview}">发布评论</a></li>
+			<li><a th:href="@{/juzimi/review/findReviewById?id=${review.id}}">修改评论</a></li>
+		</ul>
+	</div>
+	<!-- 南 -->
+	<div id = "sdiv" data-options = "region: 'south', border: false", style = "height: 5%;">
+		&copy;2019/11 龙少句子迷，仿冒必究
+	</div>
+	<!-- 中 -->
+	<div data-options = "region: 'center'">
+		<div id = "panel_register" style = "margin: auto; width: 500px; margin-top: 80px;">
+			<!-- 创建发布面板 -->
+			<div id = "register" class = "easyui-panel" title = "发布评论" data-options = "iconCls: 'icon-man'"
+				style = "width: 500px; height: 380px;">
+				<form th:action = "@{/juzimi/review/addReview}" method = "post">
+					<table>
+						<input type = "hidden" name = "user" th:field = "${review.user}" />
+						<input type = "hidden" name = "sentence" th:field = "${review.sentence}" />
+						<input type = "hidden" name = "id" th:field = "${review.id}" />
+						<tr>
+							<td>内容：</td>
+							<td><textarea name = "content" style = "height: 200px; width: 400px;"></textarea></td>
+							<td><font color = "red" th:errors = "${review.content}"></font></td>
+						</tr>
+						<tr>
+							<td colspan = "3">
+								<a id="btnCon" href = "javascript:void(0)" class = "easyui-linkbutton"
+									data-options = "iconCls:'icon-save'">添加</a>
+								&nbsp;&nbsp;&nbsp;
+								<a id = "btnCan" href = "javascript:void(0)" class = "easyui-linkbutton"
+									data-options = "iconCls: 'icon-cancel'">清空</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 引入jQuery文件 -->
+	<script th:src = "@{/js/libs/jquery.min.js}" type = "text/javascript" charset = "UTF-8"></script>
+	<!-- 引入EasyUi的js文件 -->
+	<script th:src = "@{/js/libs/jquery.easyui.min.js}" type = "text/javascript" charset = "UTF-8"></script>
+	<!-- 引入loadingDiv.js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/loadingDiv.js}" charset = "UTF-8"></script>
+	<!-- 声明js代码域 -->
+	<script type="text/javascript">
+		//注册
+		$(function(){
+			//提交
+			$("#btnCon").click(function(){
+				$("form").get(0).submit();
+			})
+			//重置
+			$("#btnCan").click(function(){
+				$("form").get(0).reset();
+			})
+		})
+	</script>
+</body>
+</html>

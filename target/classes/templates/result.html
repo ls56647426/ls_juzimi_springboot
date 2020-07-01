@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>操作提示页面</title>
+	<meta charset = "UTF-8" />
+	<!-- 引入主题样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/default/easyui.css}" />
+	<!-- 引入图标样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/icon.css}" />
+</head>
+<body>
+	<div id = "panel_result" style = "margin: auto; width: 500px; margin-top: 100px;">
+		<div id = "result" class = "easyui-panel" title = "提示" style = "width: 500px; height: 200px;
+			text-align: center; line-height: 150px;">
+		</div>
+	</div>
+	
+	<!-- 引入jQuery文件 -->
+	<script th:src = "@{/js/libs/jquery.min.js}" type = "text/javascript" charset = "UTF-8"></script>
+	<!-- 引入EasyUi的js文件 -->
+	<script th:src = "@{/js/libs/jquery.easyui.min.js}" type = "text/javascript" charset = "UTF-8"></script>
+	<!-- 引入自定义status结果的js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/status.js}" charset = "UTF-8"></script>
+	<!-- 引入loadingDiv.js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/loadingDiv.js}" charset = "UTF-8"></script>
+	<!-- 自定义js代码域 -->
+	<script th:inline = "javascript">
+		//通过status判断结果，并显示
+		function getResult(){
+			var res = [[${status}]];
+			var resDiv = document.getElementById("result");
+			resDiv.innerHTML = getStatusResult(res);
+		}
+		$(document).ready(function () {
+			getResult();
+		})
+	</script>
+</body>
+</html>

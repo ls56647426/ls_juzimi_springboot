@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>句子管理</title>
+	<meta charset = "UTF-8" />
+	
+	<!-- 引入主题样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/default/easyui.css}" />
+	
+	<!-- 引入图标样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/icon.css}" />
+	
+	<!-- 自定义后台系统样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/background.css}" />
+	
+	<!-- 自定义顶部导航样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/northNav.css}" />
+	
+	<!-- 自定义底部声明样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/southStatement.css}" />
+	
+	<!-- 引入jQuery文件 -->
+	<script type = "text/javascript" th:src = "@{/js/libs/jquery.min.js}" charset = "UTF-8"></script>
+	
+	<!-- 引入EasyUi的js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/libs/jquery.easyui.min.js}" charset = "UTF-8"></script>
+	
+	<!-- 自定义ajax函数封装 -->
+	<script type="text/javascript" th:src = "@{/js/apps/ajaxUtils.js}" charset = "UTF-8"></script>
+	
+	<!-- 引入自定义status结果的js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/status.js}" charset = "UTF-8"></script>
+	
+	<!-- 引入自定义joinSentenceSet函数封装 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/joinSentenceSet.js}" charset = "UTF-8"></script>
+	
+	<!-- 引入loadingDiv.js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/loadingDiv.js}" charset = "UTF-8"></script>
+	
+	<!-- 声明js代码域 -->
+	<script type="text/javascript">
+		//JQuery全局运行代码域
+		$(document).ready(function () {
+			//鼠标停留显示句子全部内容
+			$(".MALL").hide();
+			$(".MHover").mouseover(function (e) {
+				$(this).next(".MALL").css({"position":"absolute","top":e.pageY+5,"left":e.pageX+5}).show();
+			});
+			$(".MHover").mousemove(function (e) {
+				$(this).next(".MALL").css({ "color": "fff", "position": "absolute", "opacity": "0.7", "background-color": "666", "top": e.pageY + 5, "left": e.pageX + 5 });
+			});
+			$(".MHover").mouseout(function () {
+				$(this).next(".MALL").hide();
+			});
+			//单击加入句集弹出句集窗口
+			getShowSentenceSet();
+		});
+	</script>
+	<!-- 声明css代码域 -->
+	<style type="text/css">
+		.MHover{
+			margin: 0 auto;
+			width: 100px;
+			white-space:nowrap;
+			text-overflow:ellipsis;
+			overflow:hidden;
+		}
+	</style>
+</head>
+<body class = "easyui-layout">
+	<!-- 北 -->
+	<div id = "ndiv" data-options = "region: 'north'">
+		<ul>
+			<li style = "color: white; width: 140px;">
+				<a th:href="@{/juzimi/}">
+					<img style = "vertical-align:middle; width:40px; height:40px;" th:src="@{/img/juzimi.jpg}">
+					后台管理
+				</a>
+			</li>
+			<li><a th:href="@{/juzimi/user/admin_user}">用户管理</a></li>
+			<li><a th:href="@{/juzimi/category/admin_category}">分类管理</a></li>
+			<li><a th:href="@{/juzimi/sentence/admin_sentence}">句子管理</a></li>
+			<li><a th:href="@{/juzimi/sentence_set/admin_sentence_set}">句集管理</a></li>
+			<li><a th:href="@{/juzimi/join_sentence_set/admin_join_sentence_set}">句集内容</a></li>
+			<li><a th:href="@{/juzimi/like_sentence/admin_like_sentence}">喜欢句子</a></li>
+			<li><a th:href="@{/juzimi/like_sentence_set/admin_like_sentence_set}">喜欢句集</a></li>
+			<li><a th:href="@{/juzimi/review/admin_review}">评论管理</a></li>
+			<li><a th:href="@{/juzimi/work/admin_work}">作品管理</a></li>
+		</ul>
+	</div>
+	<!-- 南 -->
+	<div id = "sdiv" data-options = "region: 'south', border: false", style = "height: 5%;">
+		&copy;2019/11 龙少句子迷，仿冒必究
+	</div>
+	<!-- 中 -->
+	<div data-options = "region: 'center'">
+		<div id = "panel_show" style = "width: 100%; height: 100%">
+			<!-- 创建显示面板 -->
+			<div class = "easyui-panel show" title = "句子管理" data-options = "iconCls: 'icon-man'"
+				style = "width: 100%; height: 100%;">
+				<table>
+					<tr>
+						<th><a th:href = "@{/juzimi/sentence/admin_sentence(start = ${page.number}, size = ${page.size}, pro = 'id')}">ID</a></th>
+						<th><a th:href = "@{/juzimi/sentence/admin_sentence(start = ${page.number}, size = ${page.size}, pro = 'content')}">内容</a></th>
+						<th><a th:href = "@{/juzimi/sentence/admin_sentence(start = ${page.number}, size = ${page.size}, pro = 'category.name')}">分类</a></th>
+						<th><a th:href = "@{/juzimi/sentence/admin_sentence(start = ${page.number}, size = ${page.size}, pro = 'user.nickname')}">发布人</a></th>
+						<th><a th:href = "@{/juzimi/sentence/admin_sentence(start = ${page.number}, size = ${page.size}, pro = 'work.name')}">作者</a></th>
+						<th><a th:href = "@{/juzimi/sentence/admin_sentence(start = ${page.number}, size = ${page.size}, pro = 'numbers_of_like')}">喜欢数</a></th>
+						<th><a th:href = "@{/juzimi/sentence/admin_sentence(start = ${page.number}, size = ${page.size}, pro = 'publish_date')}">发布时间</a></th>
+						<th>操作</th>
+					</tr>
+					<tr th:each = "sentence : ${page.content}">
+						<td th:text = "${sentence.id}"></td>
+						<td>
+							<div class = "MHover" th:text = "${sentence.content}"></div>
+							<div class = "MALL" style = "word-wrap: break-word; word-break: break-all;" width = "100px" th:text = "${sentence.content}"></div>
+						</td>
+						<td th:text = "${sentence.category.name}"></td>
+						<td th:text = "${sentence.user.nickname}"></td>
+						<td th:text = "${sentence.work} ? ${sentence.work?.user?.nickname} + ' 《' +
+							${sentence.work?.name} + '》' : '原创'"></td>
+						<td th:text = "${sentence.numbersOfLike}"></td>
+						<td th:text = "${sentence.publishDate}"></td>
+						
+						<td>
+							<a th:href = "@{/juzimi/review/admin_review(sid = ${sentence.id})}">查看评论</a>
+							<a th:href = "@{/juzimi/review/publishReview(sid = ${sentence.id}, uid = 2)}">评论句子</a><br/>
+							<a th:href = "@{/juzimi/like_sentence/admin_like_sentence(sid = ${sentence.id})}">查看用户</a>
+							<a th:href = "@{/juzimi/like_sentence/likeSentence(sid = ${sentence.id}, uid = 2)}">喜欢句子</a><br/>
+							<a href = "javascript:void(0)" class = "showSentenceSet" th:id = "showSentenceSet+${sentence.id}">加入句集</a>
+							<a th:href = "@{/juzimi/sentence/findSentenceById(id = ${sentence.id})}">修改句子</a><br/>
+							<a th:href = "@{/juzimi/sentence/delSentence(id = ${sentence.id})}">删除句子</a>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<!-- 底部导航栏 -->
+				<div id = "sub">
+					<!-- 分页数据提交 -->
+					<div>
+						<a th:href = "@{/juzimi/sentence/admin_sentence(start = 0, size = ${page.size}, pro = ${prop})}">[首  页]</a>
+						<a th:href = "@{/juzimi/sentence/admin_sentence(start = ${page.number - 1 < 0 ? 0 : page.number - 1}, size = ${page.size}, pro = ${prop})}">[上一页]</a>
+						<a th:href = "@{/juzimi/sentence/admin_sentence(start = ${page.number + 1 > page.totalPages - 1 ? page.number : page.number + 1}, size = ${page.size}, pro = ${prop})}">[下一页]</a>
+						<a th:href = "@{/juzimi/sentence/admin_sentence(start = ${page.totalPages-1}, size = ${page.size}, pro = ${prop})}">[末  页]</a>
+					</div>
+					<br>
+					<a th:href = "@{/juzimi/sentence/publishSentence}"><button>添加句子</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--创建显示句集窗口-->
+	<div id = "div_ShowSentenceSet" class = "easyui-window show" title = "选择句集" style = "width: 400px; height: 250px;"
+		data-options = "collapsible: false, minimizable: false, maximizable: false, closed: true, modal: true">
+		<div id = "table_ShowSentenceSet"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+/*
+ * 表样式
+ */
+div.show table{
+	margin: 0 auto;
+	border-collapse: collapse;
+	width: 90%;
+}
+div.show tr{
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: lightgray;
+	height: 35px;
+}
+div.show td{
+	text-align: center;
+}
+div.show th{
+	text-align: center;
+}
+div.show{
+	padding: 30px 0px;
+}
+
+/**
+ * 底部功能栏
+ */
+div#sub{
+	width: 300px;
+	display: block;
+	margin: 0 auto
+}

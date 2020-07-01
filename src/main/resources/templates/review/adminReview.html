@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>评论管理</title>
+	<meta charset = "UTF-8" />
+	<!-- 引入主题样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/default/easyui.css}" />
+	<!-- 引入图标样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/themes/icon.css}" />
+	<!-- 自定义后台系统样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/background.css}" />
+	<!-- 自定义顶部导航样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/northNav.css}" />
+	<!-- 自定义底部声明样式 -->
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/apps/southStatement.css}" />
+	<!-- 引入jQuery文件 -->
+	<script type = "text/javascript" th:src = "@{/js/libs/jquery.min.js}" charset = "UTF-8"></script>
+	<!-- 引入EasyUi的js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/libs/jquery.easyui.min.js}" charset = "UTF-8"></script>
+	<!-- 自定义ajax函数封装 -->
+	<script type="text/javascript" th:src = "@{/js/apps/ajaxUtils.js}" charset = "UTF-8"></script>
+	<!-- 引入loadingDiv.js文件 -->
+	<script type = "text/javascript" th:src = "@{/js/apps/loadingDiv.js}" charset = "UTF-8"></script>
+	<!-- 声明js代码域 -->
+	<script type="text/javascript">
+		//JQuery全局运行代码域
+		$(document).ready(function () {
+			//鼠标停留显示句子全部内容
+			$(".MALL").hide();
+			$(".MHover").mouseover(function (e) {
+				$(this).next(".MALL").css({"position":"absolute","top":e.pageY+5,"left":e.pageX+5}).show();
+			});
+			$(".MHover").mousemove(function (e) {
+				$(this).next(".MALL").css({ "color": "fff", "position": "absolute", "opacity": "0.7", "background-color": "666", "top": e.pageY + 5, "left": e.pageX + 5 });
+			});
+			$(".MHover").mouseout(function () {
+				$(this).next(".MALL").hide();
+			});
+		});
+	</script>
+	<!-- 声明css代码域 -->
+	<style type="text/css">
+		.MHover{
+			margin: 0 auto;
+			width: 100px;
+			white-space:nowrap;
+			text-overflow:ellipsis;
+			overflow:hidden;
+		}
+	</style>
+</head>
+<body class = "easyui-layout">
+	<!-- 北 -->
+	<div id = "ndiv" data-options = "region: 'north'">
+		<ul>
+			<li style = "color: white; width: 140px;">
+				<a th:href="@{/juzimi/}">
+					<img style = "vertical-align:middle; width:40px; height:40px;" th:src="@{/img/juzimi.jpg}">
+					后台管理
+				</a>
+			</li>
+			<li><a th:href="@{/juzimi/user/admin_user}">用户管理</a></li>
+			<li><a th:href="@{/juzimi/category/admin_category}">分类管理</a></li>
+			<li><a th:href="@{/juzimi/sentence/admin_sentence}">句子管理</a></li>
+			<li><a th:href="@{/juzimi/sentence_set/admin_sentence_set}">句集管理</a></li>
+			<li><a th:href="@{/juzimi/join_sentence_set/admin_join_sentence_set}">句集内容</a></li>
+			<li><a th:href="@{/juzimi/like_sentence/admin_like_sentence}">喜欢句子</a></li>
+			<li><a th:href="@{/juzimi/like_sentence_set/admin_like_sentence_set}">喜欢句集</a></li>
+			<li><a th:href="@{/juzimi/review/admin_review}">评论管理</a></li>
+			<li><a th:href="@{/juzimi/work/admin_work}">作品管理</a></li>
+		</ul>
+	</div>
+	<!-- 南 -->
+	<div id = "sdiv" data-options = "region: 'south', border: false", style = "height: 5%;">
+		&copy;2019/11 龙少句子迷，仿冒必究
+	</div>
+	<!-- 中 -->
+	<div data-options = "region: 'center'">
+		<div id = "panel_show" style = "width: 100%; height: 100%">
+			<!-- 创建显示面板 -->
+			<div class = "easyui-panel show" title = "评论管理" data-options = "iconCls: 'icon-man'"
+				style = "width: 100%; height: 100%;">
+				<table>
+					<tr>
+						<th><a th:href = "@{/juzimi/review/admin_review(start = ${page.number}, size = ${page.size}, pro = 'id')}">ID</a></th>
+						<th><a th:href = "@{/juzimi/review/admin_review(start = ${page.number}, size = ${page.size}, pro = 'content')}">评论内容</a></th>
+						<th th:if = "not ${uid}"><a th:if = "not ${uid}" th:href = "@{/juzimi/review/admin_review(start = ${page.number}, size = ${page.size}, pro = 'user.nickname')}">用户名</a></th>
+						<th th:if = "not ${sid}"><a th:if = "not ${sid}" th:href = "@{/juzimi/review/admin_review(start = ${page.number}, size = ${page.size}, pro = 'sentence.content')}">句子内容</a></th>
+						<th><a th:href = "@{/juzimi/review/admin_review(start = ${page.number}, size = ${page.size}, pro = 'join_date')}">加入时间</a></th>
+						<th>操作</th>
+					</tr>
+					<tr th:each = "review : ${page.content}">
+						<td th:text = "${review.id}"></td>
+						<td th:text = "${review.content}"></td>
+						<td th:if = "not ${uid}" th:text = "${review.user.nickname}"></td>
+						<td th:if = "not ${sid}">
+							<div th:if = "not ${sid}" class = "MHover" th:text = "${review.sentence.content}"></div>
+							<div th:if = "not ${sid}" class = "MALL" style = "word-wrap: break-word; word-break: break-all;" width = "100px" th:text = "${review.sentence.content}"></div>
+						</td>
+						<td th:text = "${review.publish_date}"></td>
+						
+						<td>
+							<a th:href = "@{/juzimi/review/findReviewById(id = ${review.id})}">修改评论</a>
+							<a th:href = "@{/juzimi/review/delReview(id = ${review.id})}">删除评论</a>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<!-- 底部导航栏 -->
+				<div id = "sub">
+					<!-- 分页数据提交 -->
+					<div>
+						<a th:href = "@{/juzimi/review/admin_review(start = 0, size = ${page.size}, pro = ${prop})}">[首  页]</a>
+						<a th:href = "@{/juzimi/review/admin_review(start = ${page.number - 1 < 0 ? 0 : page.number - 1}, size = ${page.size}, pro = ${prop})}">[上一页]</a>
+						<a th:href = "@{/juzimi/review/admin_review(start = ${page.number + 1 > page.totalPages - 1 ? page.number : page.number + 1}, size = ${page.size}, pro = ${prop})}">[下一页]</a>
+						<a th:href = "@{/juzimi/review/admin_review(start = ${page.totalPages-1}, size = ${page.size}, pro = ${prop})}">[末  页]</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+</body>
+</html>
